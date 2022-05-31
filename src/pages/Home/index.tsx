@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
+import MovieRow from "../../components/MovieRow";
 import { getHomeList } from "../../Services/Api";
+import { movieList } from "../../types";
 
 export default function Home() {
-  const [movieList, setMovieList] = useState();
+  const [movieList, setMovieList] = useState<movieList[]>();
 
   useEffect(() => {
     const loadAll = async () => {
       let list = await getHomeList();
-      console.log(list);
+      setMovieList(list);
     };
     loadAll();
   }, []);
-  return <div></div>;
+  return (
+    <>
+      <section className="lists">
+        {movieList?.map((item, key) => {
+          return <MovieRow key={key} title={item.title} items={item.items} />;
+        })}
+      </section>
+    </>
+  );
 }

@@ -1,11 +1,13 @@
 import axios from "axios";
+import { items } from "../types";
 
 export const API_KEY = "97070d9fed21167d3fe183d0f5c9487b";
 export const api = axios.create({ baseURL: "https://api.themoviedb.org/3/" });
 
 const basicFetch = async (endpoint: any) => {
   return await api.get(`${endpoint}`).then((response) => {
-    return response;
+    const data = response.data as items;
+    return data;
   });
 };
 
@@ -15,7 +17,7 @@ export const getHomeList = async () => {
       slug: "originais",
       title: "Originais do Netflix",
       items: await basicFetch(
-        `discover/tv?with_network=213&language=pt-BR&api_key=${API_KEY}`
+        `discover/tv?with_networks=213&language=pt-BR&api_key=${API_KEY}`
       ),
     },
     {
