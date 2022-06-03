@@ -3,6 +3,10 @@ import "./style.css";
 export default function FeaturedMovie({ featuredMovie }: any) {
   let year = new Date(featuredMovie.first_air_date);
   let genres = featuredMovie.genres.map((item: any) => item.name);
+  let description = featuredMovie.overview;
+  if (description.length > 200) {
+    description = description.substring(0, 200) + "...";
+  }
   return (
     <section
       className="featured"
@@ -25,7 +29,7 @@ export default function FeaturedMovie({ featuredMovie }: any) {
               {featuredMovie.number_of_seasons !== 1 ? "s" : ""}
             </div>
           </div>
-          <div className="featured--description">{featuredMovie.overview}</div>
+          <div className="featured--description">{description}</div>
           <div className="featured--buttons">
             <a href="/" className="featured--watchbuttons">
               ► Assistir

@@ -1,12 +1,18 @@
 import { BrowserRouter, Route as Rota, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 
 export default function Route() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Rota element={<Home />} path="/" />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Rota element={<Home />} path="/" />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
+    </>
   );
 }

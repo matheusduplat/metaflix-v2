@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import FeaturedMovie from "../../components/FeaturedMovie";
+import Loading from "../../components/Loading";
 import MovieRow from "../../components/MovieRow";
 import { getHomeList, getMovieInfo } from "../../Services/Api";
 import { movieList } from "../../types";
+import "./style.css";
 
 export default function Home() {
   const [movieList, setMovieList] = useState<movieList[]>();
@@ -25,6 +27,7 @@ export default function Home() {
   }, []);
   return (
     <>
+      {movieList == null && <Loading />}
       {featuredMovie && <FeaturedMovie featuredMovie={featuredMovie} />}
       <section className="lists">
         {movieList?.map((item, key) => {
