@@ -55,13 +55,7 @@ export const getHomeList = async () => {
         `discover/movie?with_genres=27&language=pt-BR&api_key=${API_KEY}`
       ),
     },
-    {
-      slug: "romance",
-      title: "Romance",
-      items: await basicFetch(
-        `discover/movie?with_genres=1074&language=pt-BR&api_key=${API_KEY}`
-      ),
-    },
+   
     {
       slug: "documentary",
       title: "Documentarios",
